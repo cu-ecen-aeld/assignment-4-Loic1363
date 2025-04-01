@@ -20,15 +20,16 @@ endef
 
 # TODO add your writer, finder and finder-test utilities/scripts to the installation steps below
 define AESD_ASSIGNMENTS_INSTALL_TARGET_CMDS
-
-        $(INSTALL) -d $(TARGET_DIR)/etc/finder-app/conf/
-    	$(INSTALL) -m 0755 $(@D)/conf/* $(TARGET_DIR)/etc/finder-app/conf/
-
-    	$(INSTALL) -d $(TARGET_DIR)/usr/bin/
-    	$(INSTALL) -m 0755 $(@D)/finder-app/* $(TARGET_DIR)/usr/bin/
-
-    	$(INSTALL) -d $(TARGET_DIR)/bin/
-    	$(INSTALL) -m 0755 $(@D)/assignment-autotest/test/assignment4-buildroot/* $(TARGET_DIR)/binendef
+	$(INSTALL) -d $(TARGET_DIR)/etc/finder-app/conf/
+	$(INSTALL) -m 0755 $(@D)/conf/* $(TARGET_DIR)/etc/finder-app/conf/
+	
+	$(INSTALL) -d $(TARGET_DIR)/usr/bin/
+	$(INSTALL) -m 0755 $(@D)/finder-app/* $(TARGET_DIR)/usr/bin/ || true
+	
+	$(INSTALL) -d $(TARGET_DIR)/usr/bin/conf/
+	$(INSTALL) -m 0755 $(@D)/finder-app/conf/* $(TARGET_DIR)/usr/bin/conf/
+	
+	$(INSTALL) -m 0755 $(@D)/assignment-autotest/test/assignment4-buildroot/* $(TARGET_DIR)/bin
 endef
 
 $(eval $(generic-package))
